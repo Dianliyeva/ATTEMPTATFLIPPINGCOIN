@@ -1,14 +1,17 @@
 const express = require('express');
-
+const flipcoin = require('./public/flipcoin');
 const app = express();
-const port = 3000;
+const port = 4000;
 
-app.get('/flipcoin', function(req, res){
-    res.send("Hello from the root application URL");
+app.get('/flipcoin', (req, res) => {
+    const flip1= new flipcoin ()
+    // const flip2= new flipcoin ()
+    console.log(flip1.coinFlip());
+    res.send(flip1.coinFlip())
 });
 
 app.use(express.static('public'));
 
 app.listen(port, () => {
-    console.log(`Server is listening at //localhost:3000`)
+    console.log(`Server is listening at //localhost:${port}`)
 }) 
